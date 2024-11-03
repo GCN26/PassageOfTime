@@ -40,7 +40,6 @@ public class TimeObject : MonoBehaviour
         if (checkIfEnabled())
         {
             eraEnabled = true;
-            Debug.Log(name + " is enabled");
         }
         else
         {
