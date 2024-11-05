@@ -40,11 +40,12 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .5f);
             }
             flip();
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 if (manager.GetComponent<ManagerScript>().currentEra < 3)
                 {
                     manager.GetComponent<ManagerScript>().currentEra += 1;
+                    manager.GetComponent<ManagerScript>().eraChange = true;
                 }
             }
             if (InSwapZone())
