@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 85052976867692990}
   - component: {fileID: 3605817483285178859}
   m_Layer: 7
-  m_Name: TimeObject
+  m_Name: TimeObjectStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

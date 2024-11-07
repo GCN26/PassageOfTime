@@ -6,6 +6,8 @@ public class ObjectChangeInTime : MonoBehaviour
 {
     public bool inTimeZone = false;
     public GameObject manager;
+    public GameObject CreateOnEra;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,9 @@ public class ObjectChangeInTime : MonoBehaviour
     {
         if(inTimeZone && manager.GetComponent<ManagerScript>().eraChange)
         {
+            GameObject create;
             Debug.Log("Seed Planted");
+            create = Instantiate(CreateOnEra,transform.position,Quaternion.identity);
             //should be used to chnage instance of object to secondary object whether it be a tree or something else
             Destroy(gameObject);
         }
