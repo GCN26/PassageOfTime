@@ -20,6 +20,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Transform swapCheck;
     [SerializeField] private LayerMask swapLayer;
 
+    public float flashTimer;
+    public bool setFlash;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,7 +31,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale != 0)
+        //or if player has skipped time
+        if (Time.timeScale != 0 && setFlash != true)
         {
             horizontal = Input.GetAxis("Horizontal");
             if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -44,8 +48,7 @@ public class PlayerScript : MonoBehaviour
             {
                 if (manager.GetComponent<ManagerScript>().currentEra < 3)
                 {
-                    manager.GetComponent<ManagerScript>().currentEra += 1;
-                    manager.GetComponent<ManagerScript>().eraChange = true;
+                    setFlash = true;
                 }
             }
             if (InSwapZone())
@@ -53,6 +56,20 @@ public class PlayerScript : MonoBehaviour
                 Debug.Log("Player should be stuck");
                 //use this to kill player
                 Time.timeScale = 0;
+            }
+            
+        }
+        if (setFlash)
+        {
+            //freeze constraints, play animation here
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            flashTimer += Time.deltaTime;
+            if (flashTimer > .55)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                changeTime();
+                flashTimer = 0;
+                setFlash = false;
             }
         }
     }
@@ -77,5 +94,10 @@ public class PlayerScript : MonoBehaviour
     private bool InSwapZone()
     {
         return Physics2D.OverlapCircle(swapCheck.position, .45f, groundLayer);
+    }
+    public void changeTime()
+    {
+        manager.GetComponent<ManagerScript>().currentEra += 1;
+        manager.GetComponent<ManagerScript>().eraChange = true;
     }
 }
