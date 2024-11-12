@@ -20,7 +20,11 @@ public class ManagerScript : MonoBehaviour
         if (eraChange)
         {
             timer += Time.deltaTime;
-            if(timer > .1) eraChange = false;
+            if (timer > .1)
+            {
+                timer = 0;
+                eraChange = false;
+            }
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {

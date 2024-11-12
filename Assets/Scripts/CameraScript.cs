@@ -12,6 +12,9 @@ public class CameraScript : MonoBehaviour
     public float clampYMax;
     public float clampXMin;
     public float clampXMax;
+
+    public GameObject flashPrefab;
+
     private void Update()
     {
         float clampedYVal = Mathf.Clamp(followThis.transform.position.y, clampYMin, clampYMax);

@@ -20,6 +20,7 @@ public class FlashScript : MonoBehaviour
         Color tmp = this.GetComponent<SpriteRenderer>().color;
         tmp.a = timer*2;
         this.GetComponent<SpriteRenderer>().color = tmp;
-        if (timer > .55 || timer <= -.2f) polarity = !polarity;
+        if (timer > .5 || timer <= -.2f) polarity = !polarity;
+        if(timer <= 0) Destroy(gameObject);
     }
 }
