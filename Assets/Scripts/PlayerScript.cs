@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -34,6 +36,9 @@ public class PlayerScript : MonoBehaviour
     public AudioClip timeJump;
     public AudioClip die;
 
+    public bool died = false;
+    public float deathTimer = 1;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,7 +49,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         //or if player has skipped time
-        if (Time.timeScale != 0 && setFlash != true)
+        if (Time.timeScale != 0 && setFlash != true && died != true)
         {
             horizontal = Input.GetAxis("Horizontal");
             if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -70,8 +75,7 @@ public class PlayerScript : MonoBehaviour
             if (InSwapZone())
             {
                 Debug.Log("Player should be stuck");
-                //use this to kill player
-                Time.timeScale = 0;
+                MurderDeathKill();
             }
             
         }
@@ -87,6 +91,26 @@ public class PlayerScript : MonoBehaviour
                 changeTime();
                 flashTimer = 0;
                 setFlash = false;
+            }
+        }
+        if (died)
+        {
+            manager.GetComponent<ManagerScript>().playerDead = true;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            deathTimer -= Time.deltaTime;
+            Color tmp = this.GetComponent<SpriteRenderer>().color;
+            tmp.a = deathTimer;
+            this.GetComponent<SpriteRenderer>().color = tmp;
+            if(deathTimer <= .45f && setFlash == false)
+            {
+                setFlash = true;
+                aSource.PlayOneShot(die);
+                GameObject flash = Instantiate(flashPrefab);
+                flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1);
+            }
+            if (deathTimer <= -.1f)
+            {
+                SceneManager.LoadScene("Game");
             }
         }
     }
@@ -119,5 +143,9 @@ public class PlayerScript : MonoBehaviour
     {
         manager.GetComponent<ManagerScript>().currentEra += 1;
         manager.GetComponent<ManagerScript>().eraChange = true;
+    }
+    public void MurderDeathKill()
+    {
+        died = true;
     }
 }

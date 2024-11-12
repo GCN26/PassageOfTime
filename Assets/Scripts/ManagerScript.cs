@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ManagerScript : MonoBehaviour
     public bool paused = false;
     public GameObject pausePanel;
 
+    public bool playerDead = false;
     private void Start()
     {
         pausePanel.SetActive(false);
@@ -26,7 +28,7 @@ public class ManagerScript : MonoBehaviour
                 eraChange = false;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && playerDead != true)
         {
             paused = !paused;
         }
@@ -41,8 +43,21 @@ public class ManagerScript : MonoBehaviour
             pausePanel.SetActive(false);
         }
     }
+    public void RestartButton()
+    {
+        paused = false;
+        playerDead = true;
+    }
+    public void ResumeButton()
+    {
+        paused = false;
+    }
     public void QuitButton()
     {
         Application.Quit();
+    }
+    public void MenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
