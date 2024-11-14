@@ -3,7 +3,12 @@ guid: 51bc101a90c7f904ab60dead110ac6ba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - manager: {instanceID: 0}
+  - spr1: {fileID: 21300000, guid: 9a0eb600e6a8c50419fd7484404e4f2d, type: 3}
+  - spr2: {fileID: 21300000, guid: 03833efe712b45f45a4b708a5dacc21a, type: 3}
+  - spr3: {fileID: 21300000, guid: 9a0eb600e6a8c50419fd7484404e4f2d, type: 3}
+  - spr4: {fileID: 21300000, guid: 03833efe712b45f45a4b708a5dacc21a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

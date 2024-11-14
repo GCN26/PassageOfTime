@@ -38,6 +38,11 @@ public class PlayerScript : MonoBehaviour
 
     public bool died = false;
     public float deathTimer = 1;
+    public bool victory = false;
+
+    public bool deathSound = false;
+
+    public float stuckTimer = 0;
 
     void Start()
     {
@@ -75,7 +80,8 @@ public class PlayerScript : MonoBehaviour
             if (InSwapZone())
             {
                 Debug.Log("Player should be stuck");
-                MurderDeathKill();
+                stuckTimer += Time.deltaTime;
+                if(stuckTimer > 2) MurderDeathKill();
             }
             
         }
@@ -98,19 +104,44 @@ public class PlayerScript : MonoBehaviour
             manager.GetComponent<ManagerScript>().playerDead = true;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             deathTimer -= Time.deltaTime;
+            if(deathSound == false)
+            {
+                deathSound = true;
+                aSource.PlayOneShot(die);
+            }
             Color tmp = this.GetComponent<SpriteRenderer>().color;
             tmp.a = deathTimer;
             this.GetComponent<SpriteRenderer>().color = tmp;
             if(deathTimer <= .45f && setFlash == false)
             {
                 setFlash = true;
-                aSource.PlayOneShot(die);
+                aSource.PlayOneShot(timeJump);
+                GameObject flash = Instantiate(flashPrefab);
+                flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1);
+            }
+            if (deathTimer <= -.10f)
+            {
+                SceneManager.LoadScene("Game");
+            }
+        }
+        if (victory)
+        {
+            manager.GetComponent<ManagerScript>().playerDead = true;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            deathTimer -= Time.deltaTime;
+            Color tmp = this.GetComponent<SpriteRenderer>().color;
+            tmp.a = deathTimer;
+            this.GetComponent<SpriteRenderer>().color = tmp;
+            if (deathTimer <= .45f && setFlash == false)
+            {
+                setFlash = true;
+                aSource.PlayOneShot(timeJump);
                 GameObject flash = Instantiate(flashPrefab);
                 flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1);
             }
             if (deathTimer <= -.1f)
             {
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("VictoryScreen");
             }
         }
     }
@@ -146,6 +177,9 @@ public class PlayerScript : MonoBehaviour
     }
     public void MurderDeathKill()
     {
-        died = true;
+        if (died != true)
+        {
+            died = true;
+        }
     }
 }

@@ -19,7 +19,7 @@ public class ManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (eraChange)
+        if (eraChange && !playerDead)
         {
             timer += Time.deltaTime;
             if (timer > .1)
