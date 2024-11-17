@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackJumps : MonoBehaviour
+public static class TrackJumps
 {
-    public int deathSlashReset;
-    public int timeJumps;
+    public static int deathSlashReset;
+    public static int timeJumps;
     //make this persistent through resets
+
+    public static void resetTotals()
+    {
+        deathSlashReset = 0;
+        timeJumps = 0;
+    }
 }

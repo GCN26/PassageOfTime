@@ -14,6 +14,7 @@ public class ManagerScript : MonoBehaviour
     public bool playerDead = false;
     private void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
         pausePanel.SetActive(false);
     }
     // Update is called once per frame
@@ -54,10 +55,12 @@ public class ManagerScript : MonoBehaviour
     }
     public void QuitButton()
     {
+        TrackJumps.resetTotals();
         Application.Quit();
     }
     public void MenuButton()
     {
+        TrackJumps.resetTotals();
         SceneManager.LoadScene("MainMenu");
     }
 }

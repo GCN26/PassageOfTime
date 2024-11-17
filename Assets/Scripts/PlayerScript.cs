@@ -71,10 +71,11 @@ public class PlayerScript : MonoBehaviour
             {
                 if (manager.GetComponent<ManagerScript>().currentEra < 3)
                 {
+                    TrackJumps.timeJumps += 1;
                     setFlash = true;
                     aSource.PlayOneShot(timeJump);
                     GameObject flash = Instantiate(flashPrefab);
-                    flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1);
+                    flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1.1f);
                 }
             }
             if (InSwapZone())
@@ -117,7 +118,7 @@ public class PlayerScript : MonoBehaviour
                 setFlash = true;
                 aSource.PlayOneShot(timeJump);
                 GameObject flash = Instantiate(flashPrefab);
-                flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1);
+                flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1.1f);
             }
             if (deathTimer <= -.10f)
             {
@@ -128,7 +129,7 @@ public class PlayerScript : MonoBehaviour
         {
             manager.GetComponent<ManagerScript>().playerDead = true;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            deathTimer -= Time.deltaTime;
+            deathTimer -= Time.deltaTime*.75f;
             Color tmp = this.GetComponent<SpriteRenderer>().color;
             tmp.a = deathTimer;
             this.GetComponent<SpriteRenderer>().color = tmp;
@@ -137,7 +138,8 @@ public class PlayerScript : MonoBehaviour
                 setFlash = true;
                 aSource.PlayOneShot(timeJump);
                 GameObject flash = Instantiate(flashPrefab);
-                flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1);
+                flash.transform.position = new Vector3(fcamera.transform.position.x, fcamera.transform.position.y, -1.1f);
+                flash.GetComponent<FlashScript>().polOff = true;
             }
             if (deathTimer <= -.1f)
             {
@@ -179,6 +181,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (died != true)
         {
+            TrackJumps.deathSlashReset += 1;
             died = true;
         }
     }
