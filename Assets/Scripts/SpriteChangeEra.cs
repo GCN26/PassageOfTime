@@ -20,6 +20,8 @@ public class SpriteChangeEra : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //maybe just darken the sprite instead of changing it cause it looks BAD
         if(manager.GetComponent<ManagerScript>().currentEra == 0)
         {
             this.GetComponent<SpriteRenderer>().sprite = spr1;

@@ -327,6 +327,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5735985597214188067}
     m_Modifications:
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.r
+      value: 0.18042266
+      objectReference: {fileID: 0}
     - target: {fileID: 2017203627983476433, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
       propertyPath: m_Name
       value: One Way Platform
@@ -401,6 +413,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5735985597214188067}
     m_Modifications:
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.r
+      value: 0.18042266
+      objectReference: {fileID: 0}
     - target: {fileID: 2017203627983476433, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
       propertyPath: m_Name
       value: One Way Platform (2)
@@ -475,6 +499,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5735985597214188067}
     m_Modifications:
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 274731697217372482, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
+      propertyPath: m_Color.r
+      value: 0.18042266
+      objectReference: {fileID: 0}
     - target: {fileID: 2017203627983476433, guid: 630a311b5c14fd7469e95eb56f9b4082, type: 3}
       propertyPath: m_Name
       value: One Way Platform (1)
