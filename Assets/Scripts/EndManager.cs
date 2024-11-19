@@ -34,6 +34,9 @@ public class EndManager : MonoBehaviour
     public float greenF = 0;
     public float blueF = 0;
 
+    public AudioSource audiso;
+    public AudioClip buttopres;
+
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
@@ -117,6 +120,7 @@ public class EndManager : MonoBehaviour
 
     public void mainMenu()
     {
+        audiso.PlayOneShot(buttopres);
         if(gotoMenu != true)
         {
             gotoMenu = true;
@@ -125,7 +129,8 @@ public class EndManager : MonoBehaviour
     }
     public void restartLevel()
     {
-        if(gotoLast != true)
+        audiso.PlayOneShot(buttopres);
+        if (gotoLast != true)
         {
             gotoLast = true;
         }

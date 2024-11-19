@@ -81,7 +81,6 @@ public class PlayerScript : MonoBehaviour
             }
             if (InSwapZone())
             {
-                Debug.Log("Player should be stuck");
                 stuckTimer += Time.deltaTime;
                 if(stuckTimer > 2) MurderDeathKill();
             }

@@ -55,11 +55,15 @@ public class ManagerScript : MonoBehaviour
     }
     public void QuitButton()
     {
+        paused = false;
+        Time.timeScale = 1;
         TrackJumps.resetTotals();
         Application.Quit();
     }
     public void MenuButton()
     {
+        paused = false;
+        Time.timeScale = 1;
         TrackJumps.resetTotals();
         SceneManager.LoadScene("MainMenu");
     }

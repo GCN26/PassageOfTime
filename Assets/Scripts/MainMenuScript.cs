@@ -12,6 +12,9 @@ public class MainMenuScript : MonoBehaviour
     public GameObject startFlash;
     public GameObject controls;
     public GameObject credits;
+    public GameObject levelSelect;
+    public AudioSource audios;
+    public AudioClip buttonpress;
 
     public void Start()
     {
@@ -19,6 +22,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void buttonPlay()
     {
+        audios.PlayOneShot(buttonpress);
         if (!started && !started2)
         {
             started = true;
@@ -26,6 +30,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void buttonPlay2()
     {
+        audios.PlayOneShot(buttonpress);
         if (!started && !started2)
         {
             started2 = true;
@@ -33,6 +38,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void quitButton()
     {
+        audios.PlayOneShot(buttonpress);
         Application.Quit();
     }
     public void Update()
@@ -53,6 +59,8 @@ public class MainMenuScript : MonoBehaviour
     public void controlsButton()
     {
         credits.SetActive(false);
+        levelSelect.SetActive(false);
+        audios.PlayOneShot(buttonpress);
         if (controls.activeSelf == false)
         {
             controls.SetActive(true);
@@ -64,6 +72,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void creditsButton() {
         controls.SetActive(false);
+        levelSelect.SetActive(false);
+        audios.PlayOneShot(buttonpress);
         if (credits.activeSelf == false)
         {
             credits.SetActive(true);
@@ -73,8 +83,18 @@ public class MainMenuScript : MonoBehaviour
             credits.SetActive(false);
         }
     }
-    public void levelSelect()
+    public void levelSelectButton()
     {
-        //copy control and credits panel code
+        controls.SetActive(false);
+        credits.SetActive(false);
+        audios.PlayOneShot(buttonpress);
+        if (levelSelect.activeSelf == false)
+        {
+            levelSelect.SetActive(true);
+        }
+        else
+        {
+            levelSelect.SetActive(false);
+        }
     }
 }
