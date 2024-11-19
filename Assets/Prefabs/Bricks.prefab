@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8648992602622979274}
   - component: {fileID: 4435884635481798714}
   - component: {fileID: 1829226073928318006}
-  - component: {fileID: 7513173600234754575}
+  - component: {fileID: 3963841449792055934}
   m_Layer: 6
   m_Name: Bricks
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7513173600234754575
+--- !u!114 &3963841449792055934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,11 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6820821516523076466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51bc101a90c7f904ab60dead110ac6ba, type: 3}
+  m_Script: {fileID: 11500000, guid: d684047d220f71e4bb54f8ed2645669d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  spr1: {fileID: 21300000, guid: 9a0eb600e6a8c50419fd7484404e4f2d, type: 3}
-  spr2: {fileID: 21300000, guid: 03833efe712b45f45a4b708a5dacc21a, type: 3}
-  spr3: {fileID: 21300000, guid: 9a0eb600e6a8c50419fd7484404e4f2d, type: 3}
-  spr4: {fileID: 21300000, guid: 03833efe712b45f45a4b708a5dacc21a, type: 3}

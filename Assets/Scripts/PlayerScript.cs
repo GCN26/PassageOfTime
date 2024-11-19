@@ -44,6 +44,7 @@ public class PlayerScript : MonoBehaviour
 
     public float stuckTimer = 0;
 
+    public string room;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -122,7 +123,7 @@ public class PlayerScript : MonoBehaviour
             }
             if (deathTimer <= -.10f)
             {
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene(room);
             }
         }
         if (victory)
@@ -143,6 +144,7 @@ public class PlayerScript : MonoBehaviour
             }
             if (deathTimer <= -.1f)
             {
+                TrackJumps.lastRoom = room;
                 SceneManager.LoadScene("VictoryScreen");
             }
         }
